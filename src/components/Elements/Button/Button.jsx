@@ -14,14 +14,6 @@ const sizes = {
     sm: 'py-2 px-4 text-sm'
 };
 
-const Test = () => {
-    return Math.random() > 0.5 ? (
-        <button>test</button>
-    ) : (
-        <input type="submit">test</input>
-    );
-};
-
 export const Button = forwardRef(
     (
         {

@@ -2,14 +2,13 @@ import ReactDOM from 'react-dom';
 import '@/assets/styles/tailwind.css';
 import '@/assets/styles/index.css';
 import { StrictMode } from 'react';
-import { ErrorBoundary } from 'react-error-boundary';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import { initMocks } from './test/server';
 
 window.process = import.meta;
 console.log( process, import.meta.env );
-initMocks();
+initMocks().then( console.log );
 ReactDOM.render(
     <StrictMode>
         <App />

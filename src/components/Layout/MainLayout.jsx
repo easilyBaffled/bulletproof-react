@@ -10,6 +10,7 @@ import {
 } from '@heroicons/react/outline';
 import clsx from 'clsx';
 import { NavLink, Link } from 'react-router-dom';
+import { Fragment, useState } from 'react';
 import logo from '@/assets/logo.svg';
 import { useAuth } from '@/lib/auth';
 import { useAuthorization, ROLES } from '@/lib/authorization';
@@ -58,7 +59,7 @@ const UserNavigation = () => {
         {
             name:    'Sign out',
             onClick: () => {
-                logout();
+                logout().then( console.log ).catch( console.error );
             },
             to: ''
         }

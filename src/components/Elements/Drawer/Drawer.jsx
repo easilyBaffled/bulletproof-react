@@ -2,6 +2,7 @@ import { Dialog, Transition } from '@headlessui/react';
 import { XIcon } from '@heroicons/react/outline';
 import clsx from 'clsx';
 import 'intersection-observer';
+import { Fragment } from 'react';
 
 const sizes = {
     full: 'max-w-full',
@@ -10,7 +11,15 @@ const sizes = {
     sm:   'max-w-md',
     xl:   'max-w-7xl'
 };
-export const Drawer = ({ title, children, isOpen, onClose, renderFooter, size = 'md' }) => {
+// eslint-disable-next-line max-lines-per-function
+export const Drawer = ({
+    title,
+    children,
+    isOpen,
+    onClose,
+    renderFooter,
+    size = 'md'
+}) => {
     return (
         <Transition.Root show={isOpen} as={Fragment}>
             <Dialog
@@ -45,13 +54,20 @@ export const Drawer = ({ title, children, isOpen, onClose, renderFooter, size = 
                                                         className="bg-white rounded-md text-gray-400 hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-indigo-500"
                                                         onClick={onClose}
                                                     >
-                                                        <span className="sr-only">Close panel</span>
-                                                        <XIcon className="h-6 w-6" aria-hidden="true" />
+                                                        <span className="sr-only">
+                                                            Close panel
+                                                        </span>
+                                                        <XIcon
+                                                            className="h-6 w-6"
+                                                            aria-hidden="true"
+                                                        />
                                                     </button>
                                                 </div>
                                             </div>
                                         </div>
-                                        <div className="mt-6 relative flex-1 px-4 sm:px-6">{children}</div>
+                                        <div className="mt-6 relative flex-1 px-4 sm:px-6">
+                                            {children}
+                                        </div>
                                     </div>
                                     <div className="flex-shrink-0 px-4 py-4 flex justify-end space-x-2">
                                         {renderFooter()}

@@ -1,13 +1,14 @@
 import { Notification } from './Notification';
+
 const meta = {
     component:  Notification,
     parameters: {
         controls: { expanded: true }
     },
-    title: 'Components/Notifiations'
+    title: 'Components/Notifications'
 };
 export default meta;
-const Template = ( props ) => <Notification {...props}/>;
+const Template = ( props ) => <Notification {...props} />;
 export const Info = Template.bind({});
 Info.args = {
     notification: {
@@ -16,7 +17,7 @@ Info.args = {
         title:   'Hello Info',
         type:    'info'
     },
-    onDismiss: ( id ) => alert( `Dismissing Notification with id: ${id}` )
+    onDismiss: ( id ) => window.alert( `Dismissing Notification with id: ${id}` )
 };
 export const Success = Template.bind({});
 Success.args = {
@@ -26,7 +27,7 @@ Success.args = {
         title:   'Hello Success',
         type:    'success'
     },
-    onDismiss: ( id ) => alert( `Dismissing Notification with id: ${id}` )
+    onDismiss: ( id ) => window.alert( `Dismissing Notification with id: ${id}` )
 };
 export const Warning = Template.bind({});
 Warning.args = {
@@ -36,7 +37,7 @@ Warning.args = {
         title:   'Hello Warning',
         type:    'warning'
     },
-    onDismiss: ( id ) => alert( `Dismissing Notification with id: ${id}` )
+    onDismiss: ( id ) => window.alert( `Dismissing Notification with id: ${id}` )
 };
 export const Error = Template.bind({});
 Error.args = {
@@ -46,5 +47,5 @@ Error.args = {
         title:   'Hello Error',
         type:    'error'
     },
-    onDismiss: ( id ) => alert( `Dismissing Notification with id: ${id}` )
+    onDismiss: ( id ) => window.alert( `Dismissing Notification with id: ${id}` )
 };

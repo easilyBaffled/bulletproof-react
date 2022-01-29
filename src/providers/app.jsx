@@ -42,7 +42,6 @@ export const AppProvider = ({ children }) => {
                     )}
                     <Notifications />
                     <AuthProvider>
-                        {'something'}
                         <Router>{children}</Router>
                     </AuthProvider>
                 </QueryClientProvider>

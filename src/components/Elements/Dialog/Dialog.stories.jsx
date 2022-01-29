@@ -1,3 +1,4 @@
+import { useRef } from 'react';
 import { Button } from '../Button';
 import { Dialog, DialogTitle } from './Dialog';
 import { useDisclosure } from '@/hooks/useDisclosure';
@@ -16,11 +17,18 @@ export const Demo = () => {
     return (
         <>
             <Button onClick={open}>Open Modal</Button>
-            <Dialog isOpen={isOpen} onClose={close} initialFocus={cancelButtonRef}>
+            <Dialog
+                isOpen={isOpen}
+                onClose={close}
+                initialFocus={cancelButtonRef}
+            >
                 <div className="inline-block align-bottom bg-white rounded-lg px-4 pt-5 pb-4 text-left overflow-hidden shadow-xl transform transition-all sm:my-8 sm:align-middle sm:max-w-lg sm:w-full sm:p-6">
                     <div className="mt-3 text-center sm:mt-0 sm:ml-4 sm:text-left">
-                        <DialogTitle as="h3" className="text-lg leading-6 font-medium text-gray-900">
-              Modal Title
+                        <DialogTitle
+                            as="h3"
+                            className="text-lg leading-6 font-medium text-gray-900"
+                        >
+                            Modal Title
                         </DialogTitle>
                     </div>
                     <div className="mt-5 sm:mt-4 sm:flex sm:flex-row-reverse">
@@ -30,7 +38,7 @@ export const Demo = () => {
                             onClick={close}
                             ref={cancelButtonRef}
                         >
-              Cancel
+                            Cancel
                         </Button>
                     </div>
                 </div>

@@ -1,5 +1,6 @@
 import { Dialog as UIDialog, Transition } from '@headlessui/react';
 import 'intersection-observer';
+import { Fragment } from 'react';
 
 export const DialogTitle = UIDialog.Title;
 export const DialogDescription = UIDialog.Description;
@@ -29,8 +30,11 @@ export const Dialog = ({ isOpen, onClose, children, initialFocus }) => {
                         </Transition.Child>
 
                         {/* This element is to trick the browser into centering the modal contents. */}
-                        <span className="hidden sm:inline-block sm:align-middle sm:h-screen" aria-hidden="true">
-              &#8203;
+                        <span
+                            className="hidden sm:inline-block sm:align-middle sm:h-screen"
+                            aria-hidden="true"
+                        >
+                            &#8203;
                         </span>
                         <Transition.Child
                             as={Fragment}

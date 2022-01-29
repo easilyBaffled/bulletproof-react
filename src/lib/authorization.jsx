@@ -1,3 +1,4 @@
+import { useCallback } from "react";
 import { useAuth } from './auth';
 
 export var ROLES;
@@ -9,9 +10,9 @@ export const POLICIES = {
     'comment:delete': ( user, comment ) => {
         if ( user.role === 'ADMIN' ) return true;
 
-        if ( user.role === 'USER' && comment.authorId === user.id ) return true;
+        return user.role === 'USER' && comment.authorId === user.id;
 
-        return false;
+
     }
 };
 export const useAuthorization = () => {

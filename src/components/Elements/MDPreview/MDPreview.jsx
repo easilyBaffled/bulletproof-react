@@ -1,8 +1,9 @@
-import createDOMPurify from 'dompurify';
-import marked from 'marked';
-const DOMPurify = createDOMPurify( window );
+import ReactMarkdown from 'react-markdown';
+
 export const MDPreview = ({ value = '' }) => {
-    return ( <div className="p-2 w-full prose prose-indigo" dangerouslySetInnerHTML={{
-        __html: DOMPurify.sanitize( marked( value ) )
-    }}/> );
+    return (
+        <div className="p-2 w-full prose prose-indigo">
+            <ReactMarkdown>{value}</ReactMarkdown>
+        </div>
+    );
 };
