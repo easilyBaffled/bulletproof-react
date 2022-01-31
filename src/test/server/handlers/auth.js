@@ -4,6 +4,7 @@ import { nanoid } from 'nanoid';
 import { db, persistDb } from '../db';
 import { authenticate, delayedResponse, hash, requireAuth } from '../utils';
 import { API_URL } from '@/config';
+
 export const authHandlers = [
     rest.post( `${API_URL}/auth/register`, ( req, res, ctx ) => {
         try {
@@ -81,8 +82,10 @@ export const authHandlers = [
     rest.get( `${API_URL}/auth/me`, ( req, res, ctx ) => {
         try {
             const user = requireAuth( req );
+            console.tap( req, user );
             return delayedResponse( ctx.json( user ) );
         } catch ( error ) {
+            console.tap( error, req, user );
             return delayedResponse(
                 ctx.status( 400 ),
                 ctx.json({ message: error?.message || 'Server Error' })

@@ -1,4 +1,6 @@
 import { factory, primaryKey } from '@mswjs/data';
+
+console.tap( 'db' );
 const models = {
     comment: {
         authorId:     String,

@@ -8,13 +8,20 @@ import { initMocks } from './test/server';
 
 window.process = import.meta;
 console.log( process, import.meta.env );
-initMocks().then( console.log );
-ReactDOM.render(
+
+const StrictApp = () => (
     <StrictMode>
         <App />
-    </StrictMode>,
-    document.getElementById( 'root' )
+    </StrictMode>
 );
+
+const rootElement = document.getElementById( 'root' );
+
+initMocks().then( ( ...args ) => {
+    console.log( args );
+    ReactDOM.render( <StrictApp />, rootElement );
+});
+
 // If you want to start measuring performance in your app, pass a function
 // to log results (for example: reportWebVitals(console.log))
 // or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
