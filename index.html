@@ -1,18 +1,18 @@
 <!DOCTYPE html>
-<html lang='en'>
-<head>
-	<meta charset='utf-8'/>
-	<link rel='icon' href='/src/public/favicon.ico'/>
-	<meta name='viewport' content='width=device-width, initial-scale=1'/>
-	<meta name='theme-color' content='#000000'/>
-	<meta name='description' content='Bulletproof React Application'/>
-	<link rel='apple-touch-icon' href='/src/public/logo192.png'/>
-	<!--
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <link rel="icon" type="image/png" href="/favicon.png" />
+        <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta name="theme-color" content="#000000" />
+        <meta name="description" content="Bulletproof React Application" />
+        <!--
 		manifest.json provides metadata used when your web app is installed on a
 		user's mobile device or desktop. See https://developers.google.com/web/fundamentals/web-app-manifest/
 	-->
-	<link rel='manifest' href='/src/public/manifest.json'/>
-	<!--
+        <!--	<link rel='manifest' href='/src/public/manifest.json'/>-->
+        <!--
 		Notice the use of /src/public in the tags above.
 		It will be replaced with the URL of the `public` folder during the build.
 		Only files inside the `public` folder can be referenced from the HTML.
@@ -21,40 +21,40 @@
 		work correctly both with client-side routing and a non-root public URL.
 		Learn how to configure a non-root public URL by running `npm run build`.
 	-->
-	<link rel='stylesheet' href='https://rsms.me/inter/inter.css'/>
+        <!--	<link rel='stylesheet' href='https://rsms.me/inter/inter.css'/>-->
 
-	<title>Bulletproof React</title>
-	<script>
-		console.tap = ( v, ...rest ) => {
-			const stack = new Error().stack.split( "\n" );
-			const selfIndex = stack.findIndex( ( s ) =>
-				s.includes( "console.tap" )
-			);
-			const sourceStr = stack[selfIndex + 1];
+        <title>Bulletproof React</title>
+        <script>
+            console.tap = (v, ...rest) => {
+                const stack = new Error().stack.split('\n');
+                const selfIndex = stack.findIndex((s) =>
+                    s.includes('console.tap')
+                );
+                const sourceStr = stack[selfIndex + 1];
 
-			console.log(
-				v,
-				...rest,
-				sourceStr.replace(
-					/\s+at (\w+) \(([^)]+)\)/,
-					( __, $1, $2 ) => `${$1} ${new URL( $2 ).pathname}`
-				)
-			);
-			return v;
-		};
+                console.log(
+                    v,
+                    ...rest,
+                    sourceStr.replace(
+                        /\s+at (\w+) \(([^)]+)\)/,
+                        (__, $1, $2) => `${$1} ${new URL($2).pathname}`
+                    )
+                );
+                return v;
+            };
 
-		console.tap.label =
-			( label ) =>
-				( v, ...rest ) => {
-					console.log( label, v, ...rest );
-					return v;
-				};
-	</script>
-</head>
-<body>
-<noscript>You need to enable JavaScript to run this app.</noscript>
-<div id='root'></div>
-<!--
+            console.tap.label =
+                (label) =>
+                (v, ...rest) => {
+                    console.log(label, v, ...rest);
+                    return v;
+                };
+        </script>
+    </head>
+    <body>
+        <noscript>You need to enable JavaScript to run this app.</noscript>
+        <div id="root"></div>
+        <!--
 	This HTML file is a template.
 	If you open it directly in the browser, you will see an empty page.
 
@@ -64,6 +64,6 @@
 	To begin the development, run `npm start` or `yarn start`.
 	To create a production bundle, use `npm run build` or `yarn build`.
 -->
-<script type='module' src='/src/index.jsx'></script>
-</body>
+        <script type="module" src="/src/index.jsx"></script>
+    </body>
 </html>
