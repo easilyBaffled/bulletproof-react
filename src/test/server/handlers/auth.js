@@ -85,7 +85,7 @@ export const authHandlers = [
             console.tap( req, user );
             return delayedResponse( ctx.json( user ) );
         } catch ( error ) {
-            console.tap( error, req, user );
+            console.tap( error, req );
             return delayedResponse(
                 ctx.status( 400 ),
                 ctx.json({ message: error?.message || 'Server Error' })

@@ -1,4 +1,8 @@
 {
-    "testFiles": ["**/*.spec.jsx", "**/*.spec.js"],
-    "componentFolder": "src"
+  "testFiles": [
+	"**/*.spec.jsx",
+	"**/*.spec.js"
+  ],
+  "componentFolder": "src",
+  "integrationFolder": "cypress/e2e"
 }
