@@ -2,10 +2,11 @@ import { rest } from 'msw';
 import { db, persistDb } from '../db';
 import { requireAuth, requireAdmin, delayedResponse } from '../utils';
 import { API_URL } from '@/config';
+
 export const teamsHandlers = [
-    rest.get( `${API_URL}/team`, ( req, res, ctx ) => {
+    rest.get( `${API_URL}/team`, async ( req, res, ctx ) => {
         try {
-            const user = requireAuth( req );
+            const user = await requireAuth( req );
             const result = db.team.findFirst({
                 where: {
                     id: {
@@ -32,9 +33,9 @@ export const teamsHandlers = [
             );
         }
     }),
-    rest.patch( `${API_URL}/team/:teamId`, ( req, res, ctx ) => {
+    rest.patch( `${API_URL}/team/:teamId`, async ( req, res, ctx ) => {
         try {
-            const user = requireAuth( req );
+            const user = await requireAuth( req );
             const data = req.body;
             requireAdmin( user );
             const result = db.team.update({

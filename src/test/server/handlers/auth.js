@@ -6,7 +6,7 @@ import { authenticate, delayedResponse, hash, requireAuth } from '../utils';
 import { API_URL } from '@/config';
 
 export const authHandlers = [
-    rest.post( `${API_URL}/auth/register`, ( req, res, ctx ) => {
+    rest.post( `${API_URL}/auth/register`, async ( req, res, ctx ) => {
         try {
             const userObject = req.body;
             const existingUser = db.user.findFirst({
@@ -55,7 +55,7 @@ export const authHandlers = [
                 teamId
             });
             persistDb( 'user' );
-            const result = authenticate({
+            const result = await authenticate({
                 email:    userObject.email,
                 password: userObject.password
             });
@@ -79,9 +79,9 @@ export const authHandlers = [
             );
         }
     }),
-    rest.get( `${API_URL}/auth/me`, ( req, res, ctx ) => {
+    rest.get( `${API_URL}/auth/me`, async ( req, res, ctx ) => {
         try {
-            const user = requireAuth( req );
+            const user = await requireAuth( req );
             console.tap( req, user );
             return delayedResponse( ctx.json( user ) );
         } catch ( error ) {

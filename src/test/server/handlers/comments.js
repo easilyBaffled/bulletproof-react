@@ -3,10 +3,11 @@ import { nanoid } from 'nanoid';
 import { db, persistDb } from '../db';
 import { requireAuth, delayedResponse } from '../utils';
 import { API_URL } from '@/config';
+
 export const commentsHandlers = [
-    rest.get( `${API_URL}/comments`, ( req, res, ctx ) => {
+    rest.get( `${API_URL}/comments`, async ( req, res, ctx ) => {
         try {
-            requireAuth( req );
+            await requireAuth( req );
             const discussionId = req.url.searchParams.get( 'discussionId' ) || '';
             const result = db.comment.findMany({
                 where: {
@@ -23,9 +24,9 @@ export const commentsHandlers = [
             );
         }
     }),
-    rest.post( `${API_URL}/comments`, ( req, res, ctx ) => {
+    rest.post( `${API_URL}/comments`, async ( req, res, ctx ) => {
         try {
-            const user = requireAuth( req );
+            const user = await requireAuth( req );
             const data = req.body;
             const result = db.comment.create({
                 authorId:  user.id,
@@ -42,9 +43,9 @@ export const commentsHandlers = [
             );
         }
     }),
-    rest.delete( `${API_URL}/comments/:commentId`, ( req, res, ctx ) => {
+    rest.delete( `${API_URL}/comments/:commentId`, async ( req, res, ctx ) => {
         try {
-            const user = requireAuth( req );
+            const user = await requireAuth( req );
             const { commentId } = req.params;
             const result = db.comment.delete({
                 where: {

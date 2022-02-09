@@ -49,7 +49,7 @@ export async function requireAuth( request ) {
         const user = db.user.findFirst({
             where: {
                 id: {
-                    equals: decodedToken.id
+                    equals: decodedToken.payload.id
                 }
             }
         });

@@ -2,10 +2,11 @@ import { rest } from 'msw';
 import { db, persistDb } from '../db';
 import { requireAuth, requireAdmin, delayedResponse } from '../utils';
 import { API_URL } from '@/config';
+
 export const usersHandlers = [
-    rest.get( `${API_URL}/users`, ( req, res, ctx ) => {
+    rest.get( `${API_URL}/users`, async ( req, res, ctx ) => {
         try {
-            const user = requireAuth( req );
+            const user = await requireAuth( req );
             const result = db.user.findMany({
                 where: {
                     teamId: {
@@ -21,9 +22,9 @@ export const usersHandlers = [
             );
         }
     }),
-    rest.patch( `${API_URL}/users/profile`, ( req, res, ctx ) => {
+    rest.patch( `${API_URL}/users/profile`, async ( req, res, ctx ) => {
         try {
-            const user = requireAuth( req );
+            const user = await requireAuth( req );
             const data = req.body;
             const result = db.user.update({
                 data,
@@ -42,9 +43,9 @@ export const usersHandlers = [
             );
         }
     }),
-    rest.delete( `${API_URL}/users/:userId`, ( req, res, ctx ) => {
+    rest.delete( `${API_URL}/users/:userId`, async ( req, res, ctx ) => {
         try {
-            const user = requireAuth( req );
+            const user = await requireAuth( req );
             const { userId } = req.params;
             requireAdmin( user );
             const result = db.user.delete({
