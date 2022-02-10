@@ -6,6 +6,28 @@ import {
     commentGenerator
 } from '../../src/test/data-generators.js';
 
+describe( 'recorded', () => {
+    it( 'fast', () => {
+        cy.visit( '/' );
+        cy.contains( 'Get started' ).click();
+    });
+    it( 'should register', () => {
+        cy.visit( '/' );
+        cy.contains( 'Get started' ).click();
+        cy.contains( 'Register' ).click();
+        cy.url().should(
+            'contains',
+            'chrome-extension://aeblfdkhhhdcdjpifhhbdiojplfjncoa/inline/menu/menu.html'
+        );
+        cy.url().should(
+            'contains',
+            'chrome-extension://aeblfdkhhhdcdjpifhhbdiojplfjncoa/inline/menu/menu.html'
+        );
+        cy.contains( '.disabled:opacity-70', ' ' ).click();
+        cy.contains( 'Bulletproof React' ).click();
+    });
+});
+
 // eslint-disable-next-line max-lines-per-function
 describe( 'smoke', () => {
     // eslint-disable-next-line max-lines-per-function

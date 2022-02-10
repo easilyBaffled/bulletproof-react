@@ -12,8 +12,9 @@ module.exports = {
 		'plugin:jsx-a11y/recommended'
 	],
 	globals:        {
-		alert: true,
-		cy:    true
+		alert:   true,
+		cy:      true,
+		Cypress: true
 	},
 	ignorePatterns: [ 'node_modules/', 'pkg/' ],
 	parserOptions:  {
