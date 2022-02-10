@@ -8,6 +8,12 @@ export const initMocks = async () => {
         } else {
             // eslint-disable-next-line @typescript-eslint/no-var-requires
             const { worker } = await import( './browser' );
+            // worker.events.on('request:start', (req) => {
+            //     console.log(req);
+            // });
+            // worker.events.on('request:end', (req) => {
+            //     console.log(req);
+            // });
             return worker.start();
         }
     }

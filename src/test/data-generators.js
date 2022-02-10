@@ -1,4 +1,5 @@
-import * as faker from 'faker';
+import { faker } from '@faker-js/faker';
+
 export const userGenerator = ( overrides ) => ({
     bio:       faker.lorem.sentence(),
     createdAt: Date.now(),
